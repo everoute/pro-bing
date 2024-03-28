@@ -567,9 +567,7 @@ func (p *Pinger) runLoop(
 		timeout.Stop()
 	}()
 
-	if err := p.sendICMP(conn); err != nil {
-		return err
-	}
+	_ =  p.sendICMP(conn)
 
 	for {
 		select {
