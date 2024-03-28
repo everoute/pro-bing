@@ -591,11 +591,12 @@ func (p *Pinger) runLoop(
 				interval.Stop()
 				continue
 			}
-			err := p.sendICMP(conn)
-			if err != nil {
+			_ = p.sendICMP(conn)
+			// err := p.sendICMP(conn)
+			// if err != nil {
 				// FIXME: this logs as FATAL but continues
-				logger.Fatalf("sending packet: %s", err)
-			}
+				// logger.Fatalf("sending packet: %s", err)
+			// }
 		}
 		if p.Count > 0 && p.PacketsRecv >= p.Count {
 			return nil
